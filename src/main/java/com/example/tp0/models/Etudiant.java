@@ -1,5 +1,7 @@
 package com.example.tp0.models;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import jakarta.annotation.Generated;
@@ -9,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
@@ -26,6 +30,9 @@ public class Etudiant {
 	@JoinColumn(name = "idG")
 	private Groupe gr;
 	
+	@ManyToMany()
+	@JoinTable(name = "Etudiant_Prof", joinColumns = @JoinColumn(name = "idEtudiant"), inverseJoinColumns = @JoinColumn(name = "idProf"))
+	private List<Prof> listeProf = new ArrayList<Prof>();
 	
 	
 
