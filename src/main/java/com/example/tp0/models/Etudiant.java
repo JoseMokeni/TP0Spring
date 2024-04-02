@@ -14,6 +14,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -30,9 +31,15 @@ public class Etudiant {
 	@JoinColumn(name = "idG")
 	private Groupe gr;
 	
+	/*
 	@ManyToMany()
 	@JoinTable(name = "Etudiant_Prof", joinColumns = @JoinColumn(name = "idEtudiant"), inverseJoinColumns = @JoinColumn(name = "idProf"))
 	private List<Prof> listeProf = new ArrayList<Prof>();
+	*/
+	
+	@OneToMany(mappedBy = "eId.et")
+	private List<Enseignement> listeEnseignement = new ArrayList<Enseignement>();
+	
 	
 	
 

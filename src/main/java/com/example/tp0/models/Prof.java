@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -21,6 +22,8 @@ public class Prof {
 	@Column(length = 40, nullable = false, unique = true)
 	private String nom;
 	
-	@ManyToMany(mappedBy = "listeProf")
-	List<Etudiant> listeEtud = new ArrayList<Etudiant>();
+	/*@ManyToMany(mappedBy = "listeProf")
+	List<Etudiant> listeEtud = new ArrayList<Etudiant>();*/
+	@OneToMany(mappedBy = "eId.pr")
+	private List<Enseignement> listeEnseignement = new ArrayList<Enseignement>();
 }
